@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+#container {
+     width: 50%;
+  margin: 0 auto;
+}
+#container input {
+   display: inline;
+  text-align: center;
+	height: 2.5em;
+	visibility: hidden;
+}
+#container label {
+	 display: inline-block;
+  width: 25%;
+  padding: .75rem 0;
+  margin: 0;
+  text-decoration: none;
+  color: #333;
+}
+
+#content div {
+	opacity: 0;
+	padding: 1.5em;
+	position: absolute;
+	z-index: -100;
+	/*
+	transition: all linear 0.1s;
+	*/
+}
+#container input#tab-1:checked ~ #content #content-1,
+#container input#tab-2:checked ~ #content #content-2,
+#container input#tab-3:checked ~ #content #content-3 {
+    opacity: 1;
+    z-index: 100;
+}
+hr {
+  height: .25rem;
+  width: 25%;
+  margin: 0;
+  background: tomato;
+  border: none;
+  transition: .3s ease-in-out;
+}
+body {
+  font: 300 100% 'Helvetica Neue', Helvetica, Arial;
+}
+.two:hover ~ hr {
+  margin-left: 25%;
+}
+.two:hover ~ hr {
+  margin-left: 25%;
+}
+
+.three:hover ~ hr {
+  margin-left: 50%;
+}
+
+.four:hover ~ hr {
+  margin-left: 75%;
+}
+</style>
+
+</head>
+<body>
+	<!--Título-->
+	
+	<!--Contenedor-->
+	<div id="container">
+		<!--Pestaña 1 activa por defecto-->
+	    <input id="tab-1"  type="radio" name="tab-group" checked="checked" />
+	    <label for="tab-1" class="one">Foundation</label>
+	    <!--Pestaña 2 inactiva por defecto-->
+	    <input id="tab-2" class="two" type="radio" name="tab-group" />
+	    <label for="tab-2" class="two">Advanced</label>
+	    <!--Pestaña 3 inactiva por defecto-->
+	    <input id="tab-3" type="radio" class="three" name="tab-group" />
+	    <label for="tab-3" class="three">Expert</label>
+      <hr />
+	    <!--Contenido a mostrar/ocultar-->
+	    <div id="content">
+	    	<!--Contenido de la Pestaña 1-->
+	        <div id="content-1">
+	            This will certify that the person is fluent with the basics of algorithms and data structures
+and can implement them in code.<br/>
+	            <table>
+	<tr>
+	<td>Free Resources to Prepare</td>
+	<td>Get the entire syllabus, which is accompanied with
+resources on each topic with practice problems.
+Syllabus & Resources
+Once ready, give mock to test</td>
+	</tr>
+  <tr></tr>
+  <tr>
+	<td>Course Price</td>
+	<td>Rs. 3,500/-
+Avail between 25 Sept - 21 Oct
+Rs.2,500/- Discounted price</td>
+	</tr>
+	</table>
+	        </div>
+	        <!--Contenido de la Pestaña 2-->
+	        <div id="content-2">
+	            This will certify that the person is fluent with the basics of algorithms and data structures
+and can implement them in code.<br/>
+	            <table>
+	<tr>
+	<td>Free Resources to Prepare</td>
+	<td>Get the entire syllabus, which is accompanied with
+resources on each topic with practice problems.
+Syllabus & Resources
+Once ready, give mock to test</td>
+	</tr>
+  <tr></tr>
+  <tr>
+	<td>Course Price</td>
+	<td>Rs. 4,500/-
+Avail between 25 Sept - 21 Oct
+Rs.2,500/- Discounted price</td>
+	</tr>
+	</table>
+	        </div>
+	        <!--Contenido de la Pestaña 3-->
+	        <div id="content-3">
+	        	This will certify that the person is fluent with the basics of algorithms and data structures
+and can implement them in code.<br/>
+	            <table>
+	<tr>
+	<td>Free Resources to Prepare</td>
+	<td>Get the entire syllabus, which is accompanied with
+resources on each topic with practice problems.
+Syllabus & Resources
+Once ready, give mock to test</td>
+	</tr>
+  <tr></tr>
+  <tr>
+	<td>Course Price</td>
+	<td>Rs. 6,500/-
+Avail between 25 Sept - 21 Oct
+Rs.2,500/- Discounted price</td>
+	</tr>
+   
+	</table>
+	        </div>
+	    </div>
+	</div>
+</body>
+</html>

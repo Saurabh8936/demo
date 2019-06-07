@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+<!-- tabs -->
+.tabs {
+  display: block;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0;
+  overflow: hidden;
+}
+
+.tabs [class^="tab"] label, .tabs [class*=" tab"] label {
+  color: #efedef;
+  cursor: pointer;
+  display: block;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1em;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.tabs [class^="tab"] [type="radio"], .tabs [class*=" tab"] [type="radio"] {
+  border-bottom: 1px solid rgba(239, 237, 239, 0.5);
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.tabs [class^="tab"] [type="radio"]:hover, .tabs [class^="tab"] [type="radio"]:focus, .tabs [class*=" tab"] [type="radio"]:hover, .tabs [class*=" tab"] [type="radio"]:focus { border-bottom: 1px solid #fd264f; }
+
+.tabs [class^="tab"] [type="radio"]:checked, .tabs [class*=" tab"] [type="radio"]:checked { border-bottom: 2px solid #fd264f; }
+
+.tabs [class^="tab"] [type="radio"]:checked + div, .tabs [class*=" tab"] [type="radio"]:checked + div { opacity: 1; }
+
+.tabs [class^="tab"] [type="radio"] + div, .tabs [class*=" tab"] [type="radio"] + div {
+  display: block;
+  opacity: 0;
+  padding: 2rem 0;
+  width: 90%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.tabs .tab-2 { width: 50%; }
+
+.tabs .tab-2 [type="radio"] + div {
+  width: 200%;
+  margin-left: 200%;
+}
+
+.tabs .tab-2 [type="radio"]:checked + div { margin-left: 0; }
+
+.tabs .tab-2:last-child [type="radio"] + div { margin-left: 100%; }
+
+.tabs .tab-2:last-child [type="radio"]:checked + div { margin-left: -100%; }
+<!-- C -->
+html, body {
+    margin: 0px;
+    padding: 0px;
+    background: url("http://digital.bnint.com/filelib/s9/photos/white_wood_4500x3000_lo_res.jpg");
+}
+
+.carousel {
+    position: relative;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
+    margin-top: 26px;
+}
+
+.carousel-inner {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-open:checked + .carousel-item {
+    position: static;
+    opacity: 100;
+}
+
+.carousel-item {
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
+}
+
+.carousel-item img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.carousel-control {
+    background: rgba(0, 0, 0, 0.28);
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    font-size: 40px;
+    height: 40px;
+    line-height: 35px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    cursor: pointer;
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    text-align: center;
+    width: 40px;
+    z-index: 10;
+}
+
+.carousel-control.prev {
+    left: 2%;
+}
+
+.carousel-control.next {
+    right: 2%;
+}
+
+.carousel-control:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: #aaaaaa;
+}
+
+#carousel-1:checked ~ .control-1,
+#carousel-2:checked ~ .control-2,
+#carousel-3:checked ~ .control-3 {
+    display: block;
+}
+
+.carousel-indicators {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 2%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.carousel-bullet {
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 35px;
+}
+
+.carousel-bullet:hover {
+    color: #aaaaaa;
+}
+
+#carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
+#carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
+#carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
+    color: #428bca;
+}
+
+#title {
+    width: 100%;
+    position: absolute;
+    padding: 0px;
+    margin: 0px auto;
+    text-align: center;
+    font-size: 27px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Open Sans', sans-serif;
+    z-index: 9999;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), -1px 0px 2px rgba(255, 255, 255, 0);
+}
+<!--Card -->
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 20%;
+ 
+  
+}
+.card + .card {
+margin:0 0 0 28px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+<!--Navbar-->
+*{transition:all 0.3s ease-in-out;}
+
+.container{
+  clear:both;
+  overflow:auto;
+}
+
+nav{float:right;}
+
+.logo img{float:left;}
+
+ul li{
+  display: inline-block; padding:10px;
+  font-size:20px; font-family:raleway;
+}
+
+ul li:hover{
+  color:orange;
+  
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 300 100% 'Helvetica Neue', Helvetica, Arial;
+}
+
+.container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+ul li {
+  display: inline;
+  text-align: center;
+}
+
+a {
+  display: inline-block;
+  width: 25%;
+  padding: .75rem 0;
+  margin: 0;
+  text-decoration: none;
+  color: #333;
+}
+
+.two:hover ~ hr {
+  margin-left: 25%;
+}
+
+.three:hover ~ hr {
+  margin-left: 50%;
+}
+
+.four:hover ~ hr {
+  margin-left: 75%;
+}
+
+hr {
+  height: .25rem;
+  width: 25%;
+  margin: 0;
+  background: tomato;
+  border: none;
+  transition: .3s ease-in-out;
+}
+</style>
+</head>
+<body>
+ccdsap@codechef.com &nbsp; +91 93200 60499  
+<div align="right" style="float:right">
+<button type="button" align="right">Log-in</button>
+<button type="button" align="right">New User</button>
+</div>
+<br></br>
+<hr style="background:gray;width:100%"></hr>
+
+<!-- Navbar-->
+<div >
+<div class="logo" align="left">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/2000px-Intel-logo.svg.png" alt="" width="50"/>
+  </div>
+<nav align="right">
+  <ul>
+  <li>Home</li>
+  <li>About</li>
+  <li>Levels</li>
+  <li>Details</li>
+  <li>Help</li>
+  </ul>
+  </nav>
+</div>
+<br></br>
+
+<div style="background-color:#EDEBF3  ;margin-top:70px">
+<h1 style="padding-top:120px" align="center">India’s only industry-ready certification in DSA</h1>
+<h3 align="center">Certify yourself with Codechef’s Multi-Level Assessment in Data Structure &
+Algorithms & get globally recognized.</h3>
+
+<div align="center">	<button type="button" align="center">Enrol Now</button></div>
+</div>
+<div style="background-color:black">
+<h2 align="center" style="color:white">Exam Date 31 Mar 2019 Last Date of Registration 18 Mar 2019</h2>
+</div>
+<div>
+<h1 align="center">DSA Certification</h1>
+</div>
+<div>
+<h3>This certification is an assessment of proficiency in programming using Data Structures and
+Algorithms under a proctored environment.</h3>
+</div>
+<div>
+<h3 align="center">The certification can be used for a lifetime as it tests a candidate’s grasp on subjects that are very
+fundamental to the field of computer science and durable; they do not change with technological
+advancements.</h3>
+
+</div>
+
+<h1> Levels </h1>
+
+
+
+<!-- C  --> 
+
+<div class="carousel">
+    <div class="carousel-inner">
+        <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+        <div class="carousel-item"  align="center">
+            <div class="card" align="center" style="width:50%">
+			<table style="align:center"><tr><td>
+  <img src="img_avatar.png" alt="Avatar" style="width:20%" ></td>
+  <td>
+  <div class="container">
+    <h4>CCDSAP gave my talent and hard work the
+opportunity to interview with the top tech
+companies in India. CCDSAP gave my talent and
+hard work the opportunity to with the top tech
+companies in India.
+</h4> 
+    <p><b>Amit Jha</b></p> 
+	Software Engineer, Sharechat
+	<hr style="background-color:gray"></hr>
+	Foundation Certified    <span style="height:7px;width:7px; background-color:blue;border-radius:50%; display:inline-block" class="dot"></span>
+	<span style="height:7px;width:7px; background-color:blue;border-radius:50%; display:inline-block" class="dot"></span>
+	<span style="height:7px;width:7px; background-color:blue;border-radius:50%; display:inline-block" class="dot"></span>
+	<span style="height:7px;width:7px; background-color:blue;border-radius:50%; display:inline-block" class="dot"></span>
+  </div>
+  </td></tr></table>
+</div>
+        </div>
+        <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item">
+            <img src="http://fakeimg.pl/2000x800/DA5930/fff/?text=JavaScript">
+        </div>
+        <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item">
+            <img src="http://fakeimg.pl/2000x800/F90/fff/?text=Carousel">
+        </div>
+        <label for="carousel-3" class="carousel-control prev control-1">‹</label>
+        <label for="carousel-2" class="carousel-control next control-1">›</label>
+        <label for="carousel-1" class="carousel-control prev control-2">‹</label>
+        <label for="carousel-3" class="carousel-control next control-2">›</label>
+        <label for="carousel-2" class="carousel-control prev control-3">‹</label>
+        <label for="carousel-1" class="carousel-control next control-3">›</label>
+        <ol class="carousel-indicators">
+            <li>
+                <label for="carousel-1" class="carousel-bullet">•</label>
+            </li>
+            <li>
+                <label for="carousel-2" class="carousel-bullet">•</label>
+            </li>
+            <li>
+                <label for="carousel-3" class="carousel-bullet">•</label>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<!-- Cards -->
+<h1 align="center"> Testimonials </h1>
+<h3 align="center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3>
+
+<!-- Cards -->
+<div class="container" style="width:70%">
+<div class="card" style="float:left">
+  <img src="img_avatar.png" alt="Avatar" style="width:20%">
+  <div class="container">
+    <h4><b>John Doe</b></h4> 
+    <p>Architect & Engineer</p> 
+	<hr style="background-color:gray;width:100%"></hr>
+	
+	<span style="height:7px;width:7px; background-color:blue;border-radius:50%; display:inline-block" class="dot"></span>
+	<span style="height:7px;width:7px; background-color:blue;border-radius:50%; display:inline-block" class="dot"></span>
+	<span style="height:7px;width:7px; background-color:blue;border-radius:50%; display:inline-block" class="dot"></span>
+	<span style="height:7px;width:7px; background-color:blue;border-radius:50%; display:inline-block" class="dot"></span>
+  </div>
+</div>
+
+<div class="card" style="float:left">
+  <img src="img_avatar.png" alt="Avatar" style="width:20%">
+  <div class="container">
+    <h4><b>John Doe</b></h4> 
+    <p>Architect & Engineer</p> 
+  </div>
+</div>
+&nbsp;&nbsp;
+
+<div class="card" style="float:right">
+  <img src="img_avatar.png" alt="Avatar" style="width:20%">
+  <div class="container">
+    <h4><b>John Doe</b></h4> 
+    <p>Architect & Engineer</p> 
+  </div>
+</div>
+<div class="card" style="float:right">
+  <img src="img_avatar.png" alt="Avatar" style="width:20%">
+  <div class="container">
+    <h4><b>John Doe</b></h4> 
+    <p>Architect & Engineer</p> 
+  </div>
+</div>
+</div>
+
+
+<!-- Footer -->
+<div>
+Follow Us<br/> 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/2000px-Intel-logo.svg.png" alt="" width="50"/>  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/2000px-Intel-logo.svg.png" alt="" width="50"/>  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/2000px-Intel-logo.svg.png" alt="" width="50"/>  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/2000px-Intel-logo.svg.png" alt="" width="50"/>
+</div>
+<div >
+<div class="logo" align="left">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/2000px-Intel-logo.svg.png" alt="" width="50"/>
+  </div>
+<nav align="left" style="float:left">
+  <ul>
+  <li>Home</li>
+  <li>About</li>
+  <li>Levels</li>
+  <li>Details</li>
+  <li>Help</li>
+  </ul>
+  </nav>
+  
+  
+</div>
+<br/><br/>
+<br/>
+<div >
+<div class="logo" align="left">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/2000px-Intel-logo.svg.png" alt="" width="50"/>
+  </div>
+<nav align="left" style="float:left">
+  <ul>
+  <li>Practise</li>
+  <li>Compete</li>
+  <li>Discuss</li>
+  <li>Collaborate</li>
+  <li>Initiatives</li>
+  <li>Community</li>
+  
+  </ul>
+ 
+  </nav>
+   <h3 style="float:right;overflow:hidden" >Payment Methods <img style="float:right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/2000px-Intel-logo.svg.png" alt="" width="10"/>  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/2000px-Intel-logo.svg.png" alt="" width="10"/>  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/2000px-Intel-logo.svg.png" alt="" width="10"/>  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/2000px-Intel-logo.svg.png" alt="" width="10"/>
+</h3>
+  
+</div>
+
+</body>
+</html> 
